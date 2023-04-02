@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  <link href="/assets/images/icon.png" rel="icon">
+  <link rel="shortcut icon" type="x-icon" href="/mountain/assets/images/icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+  <link href="./assets/favicon.ico" rel="icon">
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+  <link href="style.css" rel="stylesheet">
+
+
+  <title>Encryption</title>
+
+<link href="./main.550dcf66.css" rel="stylesheet"></head>
+
+<body öncontextmenu="return false"> <!-- Add your content of header -->
+<header>
+  <nav class="navbar navbar-default active">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html" title="">
+          <img src="./assets/images/logo-01.png" style="max-width: 200px; top: 20px;" class="navbar-logo-img" alt="">
+        </a>
+      </div>
+      <div class="navcard">
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right ">
+          
+          <li class="hover"><a href="./index.html" title="">Home</a></li>
+          <li class="active2" ><a href="./project.html" target="_blank">Encryption</a></li>
+          <li class="hover"><a href="./project1.html" target="_blank">Decryption</a></li>
+        </div>
+      </div>
+
+        </ul>
+      </div> 
+    </div>
+  </nav>
+</header>
+
+<div class="section-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+          <div class="card">
+          <h1 class="text-center" style="font-size: 40px !important;">Encryption</h1>
+          <h3 class="text-center" style="color: #1763e9;"> Enter the Message </h3>
+          <input class="col-xs-12 col-md-8 col-md-offset-2 input-box" type="text" id="test-input"/>
+          <button class="button-enc col-xs-12 col-md-8 col-md-offset-2" id="test-button" pys-onclick="my_function"><b>Encrypt</b></button>
+          <br>
+          <br>
+            <br>
+            <br>
+            <div class="card2">
+            <h4 class="text-center dec-msg" id="test-output" class="p-3"></h4>
+            <h4 class="text-center dec-msg" id="test-output1" class="p-3"></h4>
+            </div>
+            </div>
+            <py-script>
+       from js import console
+       from datetime import datetime
+       import random
+       k=[]
+       def keygen():
+           n=random.randint(47,255)
+           m=random.randint(47,77)
+           s=""
+           s=s+chr(n)
+           s=s+chr(m)
+           return s
+       for i in range (0,8):
+           k.append(keygen())
+       def my_function(*args, **kwargs):
+           text = Element("test-input").element.value
+           s="Key:"
+           now = datetime.now()
+           for l in k:
+               s=s+l+'.'
+           s=s+str(now.minute)   
+           ki=0
+           Element("test-output").element.innerHTML = s
+           s="Encypted Message:"
+           for c in text:
+               st=k[ki]
+               n=ord(st[0])
+               if n%2==0:
+                   c1=ord(st[1])-46
+                   s=s+(chr(ord(c)+c1))
+               else:
+                   c1=ord(st[1])-46
+                   s=s+(chr(ord(c)-c1))
+               ki+=1
+               if ki==8:
+                   ki=0
+           Element("test-output1").element.innerHTML = s
+           print(s)
+            </py-script>
+       </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-container">
+    <div class="container">
+      <div class="row section-container-spacer">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+          <h2 class="text-center">More about Encryption</h2>
+          <div class="section-container-spacer">
+            <p>In this algorithm we have used randomness to its second power to create a key that encodes and decodes our data in a very secure manner. Our key is a 24bit which can be easily modified to achieve a higher degree of security.  
+              Using Brute Force to decrypt our algorithm will be a very difficult task as our algorithm and key changes every time we use the algorithm and for the same reason sampling our different test cases will provide zero results as each of them will follow an automatically generated random sequence of unknown length to encode itself to create ciphertext (aka. Encrypted Message).
+              Today we are presenting to you our project the frontend part of which is showcased using HTML, CSS, JS, Bootstrap and PyScript.</p>
+          </div>  
+        </div>  
+      </div>
+    </div>
+  </div>
+
+<footer class="footer-container white-text-container">
+  <div class="container">
+    <div class="row">
+
+     
+      <div class="col-xs-12">
+        <h3>Encryption & Decryption</h3>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-7">
+            <p><small>Designed By <b>Access Denied</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    navActivePage();
+    scrollRevelation('.reveal');
+  });
+</script>
+<script TYPE="text/javascript">
+  document.addEventListener("contextmenu", function(event){
+event.preventDefault();
+alert('Chalaki Not Allowed!');    
+}, false);
+  </script>
+<script>
+  document.onkeydown = function(e) {
+          if (e.ctrlKey && 
+              (e.keyCode === 65 ||
+               e.keyCode === 88 || 
+               e.keyCode === 85 ||
+               e.keyCode === 83 ||  
+               e.keyCode === 73 ||
+               e.keyCode === 123 ||
+               e.keyCode === 117 ||
+               e.keycode === 16)) {
+              alert('Chalaki Not Allowed!');
+              return false;
+          } 
+          if (e.keyCode === 123 )
+          {
+            alert('Chalaki Not Allowed!');
+            return false;
+          }
+          else {
+              return true;
+          }
+  };
+  </script>
+  
+
+<script type="text/javascript" src="./main.0cf8b554.js"></script></body>
+
+</html>

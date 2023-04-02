@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  <link href="/assets/images/icon.png" rel="icon">
+  <link rel="shortcut icon" type="x-icon" href="/mountain/assets/images/icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+  <link href="./assets/favicon.ico" rel="icon">
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+  <link href="style.css" rel="stylesheet">
+
+
+  <title>Decryption</title>
+
+<link href="./main.550dcf66.css" rel="stylesheet"></head>
+
+<body öncontextmenu="return false"> <!-- Add your content of header -->
+<header>
+  <nav class="navbar navbar-default active">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html" title="">
+          <img src="./assets/images/logo-01.png" style="max-width: 200px; top: 20px;" class="navbar-logo-img" alt="">
+        </a>
+      </div>
+      <div class="navcard">
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li class="hover"><a href="./index.html" title="">Home</a></li>
+          <li class="hover"><a href="./project.html" target="_blank">Encryption</a></li>
+          <li class="active2"><a href="./project1.html" target="_blank">Decryption</a></li>
+          </div>
+        </ul>
+      </div> 
+    </div>
+  </nav>
+</header>
+
+<div class="section-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+          <div class="card">
+          <h1 class="text-center" style="font-size: 40px !important;">Decryption</h1>
+          <form onsubmit="return false">
+            <h3 class="text-center" style="color: #1763e9;"> Enter the Key </h3>
+            <input class="col-xs-12 col-md-8 col-md-offset-2 input-box" type="text" id="key" name="key" value="">
+            <br>
+            <br>
+            <h3 class="text-center" style="color: #1763e9;"> Enter the Encypted Message </h3>
+            <input class="col-xs-12 col-md-8 col-md-offset-2 input-box"  type="text" id="msg" name="msg" value=""><br>
+            <br>
+            <input class="button-enc col-xs-12 col-md-8 col-md-offset-2" style="font-weight: bold;" pys-onClick="sub" type="submit" id="btn-form" value="Decrypt">
+          
+    
+        </form> 
+        <br>
+        <br>
+        <br>
+        <h3 class="text-center" style="color: #1763e9;" >Original Message:</h3>
+      
+        <h3 class="text-center"id = "output"></3>
+        </div>
+        <py-script>
+    from datetime import datetime
+    def dec(cs,m):
+       k=cs.split('.')
+       now = datetime.now()
+       ki=0
+       if int(now.minute) > int(k[8]) + 2:
+          return "****Key Is Expired!****"
+       s=" "
+       for c in m:
+          st=k[ki]
+          n=ord(st[0])
+          if n%2==0:
+             c1=ord(st[1])-46
+             s+=(chr(ord(c)-c1))
+          else:
+            c1=ord(st[1])-46
+            s+=(chr(ord(c)+c1))
+          ki+=1
+          if ki==8:
+            ki=0
+       return s
+    
+    def sub(*args,**kwargs):
+       result_place = Element("output")
+       m=dec(Element('key').value,Element('msg').value)
+       result_place.write(m)
+        </py-script>
+       </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-container">
+    <div class="container">
+      <div class="row section-container-spacer">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+          <h2 class="text-center">Decryption</h2>
+          <div class="section-container-spacer">
+            <p> Decryption is the process of transforming data that has been rendered unreadable through encryption back to its unencrypted form. In decryption, the system extracts and converts the garbled data and transforms it to texts and images that are easily understandable not only by the reader but also by the system. Decryption may be accomplished manually or automatically. It may also be performed with a set of keys or passwords.</p>
+          </div>  
+        </div>  
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-container white-text-container">
+    <div class="container">
+      <div class="row">
+  
+       
+        <div class="col-xs-12">
+          <h3>Encryption & Decryption</h3>
+  
+          <div class="row">
+            <div class="col-xs-12 col-sm-7">
+              <p><small>Designed By <b>Access Denied</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    navActivePage();
+    scrollRevelation('.reveal');
+  });
+</script>
+
+<script TYPE="text/javascript">
+  document.addEventListener("contextmenu", function(event){
+event.preventDefault();
+alert('Chalaki Not Allowed!');    
+}, false);
+  </script>
+<script>
+  document.onkeydown = function(e) {
+          if (e.ctrlKey && 
+              (e.keyCode === 65 ||
+               e.keyCode === 88 || 
+               e.keyCode === 85 ||
+               e.keyCode === 83 ||  
+               e.keyCode === 73 ||
+               e.keyCode === 123 ||
+               e.keyCode === 117 ||
+               e.keycode === 16)) {
+              alert('Chalaki Not Allowed!');
+              return false;
+          } 
+          if (e.keyCode === 123 )
+          {
+            alert('Chalaki Not Allowed!');
+            return false;
+          }
+          else {
+              return true;
+          }
+  };
+  </script>
+  
+<script type="text/javascript" src="./main.0cf8b554.js"></script></body>
+
+</html>
